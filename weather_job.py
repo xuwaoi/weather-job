@@ -1,4 +1,10 @@
 import os
+import requests
+import time
+from datetime import datetime
+from influxdb_client import InfluxDBClient, Point
+from influxdb_client.client.write_api import SYNCHRONOUS
+
 INFLUX_URL    = os.environ["INFLUX_URL"]
 INFLUX_TOKEN  = os.environ["INFLUX_TOKEN"]
 INFLUX_ORG    = os.environ["INFLUX_ORG"]
@@ -35,4 +41,3 @@ while True:
     except Exception as e:
         print(f"Ошибка: {e}")
     time.sleep(1800)
-
