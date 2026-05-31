@@ -1,14 +1,8 @@
-import requests
-import time
-from datetime import datetime
-from influxdb_client import InfluxDBClient, Point
-from influxdb_client.client.write_api import SYNCHRONOUS
-
-# СЮДА ВСТАВЬ СВОИ ДАННЫЕ
-INFLUX_URL    = "https://us-east-1-1.aws.cloud2.influxdata.com"
-INFLUX_TOKEN  = "rmGMPDav2i_SQYdC_u65eulSgoho-e7OtRZ9Fwo_PaMJqap8wk1aqpHhBbLIe9bgsqdkR5R8r1pI7CrGbZe6Cg=="
-INFLUX_ORG    = "xuwaoii@gmail.com"
-INFLUX_BUCKET = "weather_nyc"
+import os
+INFLUX_URL    = os.environ["INFLUX_URL"]
+INFLUX_TOKEN  = os.environ["INFLUX_TOKEN"]
+INFLUX_ORG    = os.environ["INFLUX_ORG"]
+INFLUX_BUCKET = os.environ["INFLUX_BUCKET"]
 
 def fetch_weather():
     url = "https://api.open-meteo.com/v1/forecast"
