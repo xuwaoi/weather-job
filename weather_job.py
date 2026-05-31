@@ -1,6 +1,6 @@
 import os
 import requests
-import time
+import time as time_module
 from datetime import datetime
 from influxdb_client import InfluxDBClient, Point
 from influxdb_client.client.write_api import SYNCHRONOUS
@@ -26,6 +26,8 @@ def write_to_influx(data):
 while True:
     try:
         write_to_influx(fetch_weather())
+        print('Sleeping 30 min...', flush=True)
+        time_module.sleep(1800)
     except Exception as e:
         print(f'Oshibka: {e}', flush=True)
-    time.sleep(1800)
+        time_module.sleep(60)
