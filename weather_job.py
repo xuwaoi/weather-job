@@ -1,4 +1,4 @@
-import os
+﻿import os
 import requests
 import time
 from datetime import datetime
@@ -31,7 +31,7 @@ def write_to_influx(data):
         .field("precipitation",  float(data["precipitation"])) \
         .field("humidity_pct",   float(data["relative_humidity_2m"]))
     write_api.write(bucket=INFLUX_BUCKET, record=point)
-    print(f"[{datetime.now().strftime('%H:%M:%S')}] Записано: {data}")
+    print(f"[{datetime.now().strftime('%H:%M:%S')}] Zapisano: {data}")
     client.close()
 
 while True:
@@ -39,5 +39,5 @@ while True:
         weather = fetch_weather()
         write_to_influx(weather)
     except Exception as e:
-        print(f"Ошибка: {e}")
+        print(f"Oshibka: {e}")
     time.sleep(1800)
